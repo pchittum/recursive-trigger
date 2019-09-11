@@ -4,9 +4,11 @@ public with sharing class AccountTriggerHandler {
 
     public static void executeTriggerLogic(List<Account> accounts, System.TriggerOperation operationType){
 
-        Account accountToUpdate = new Account(Id=accounts[0].Id);
-        accountToUpdate.Name = accountToUpdate.Name + String.valueOf(iValue);
-        update accountToUpdate; //NOPMD
+        String newName = 'recurse' + iValue++; 
+        Account accountToInsert = new Account();
+        accountToInsert.Name = newName; 
+        System.debug(accountToInsert);
+        insert accountToInsert; //NOPMD
 
     }
 
